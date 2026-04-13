@@ -11,7 +11,7 @@ body {
     color: #fff;
 }
 
-/* BACKGROUND GLOW */
+/* BACKGROUND */
 .hero-image-backdrop {
     position: fixed;
     width: 100%;
@@ -20,7 +20,7 @@ body {
     z-index: -1;
 }
 
-/* CENTER CONTENT */
+/* CENTER */
 .container {
     display: flex;
     justify-content: center;
@@ -110,7 +110,7 @@ body {
     box-shadow: 0 10px 25px rgba(0,153,255,0.4);
 }
 
-/* MODAL BACKDROP */
+/* MODAL */
 .modal {
     position: fixed;
     inset: 0;
@@ -121,12 +121,11 @@ body {
     z-index: 1000;
 }
 
-/* HIDE */
 .hidden {
     display: none;
 }
 
-/* MODAL BOX */
+/* MODAL CONTENT */
 .modal-content {
     background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(20px);
@@ -137,7 +136,6 @@ body {
     animation: fadeIn 0.3s ease;
 }
 
-/* ANIMATION */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -149,9 +147,7 @@ body {
     }
 }
 
-/* ========================= */
-/* WALLET LIST (PRO VERSION) */
-/* ========================= */
+/* ================= WALLET LIST ================= */
 
 .wallet-list {
     display: flex;
@@ -163,7 +159,6 @@ body {
     padding-right: 5px;
 }
 
-/* SCROLLBAR */
 .wallet-list::-webkit-scrollbar {
     width: 4px;
 }
@@ -172,7 +167,6 @@ body {
     border-radius: 10px;
 }
 
-/* WALLET ITEM */
 .wallet-item {
     display: flex;
     align-items: center;
@@ -184,47 +178,86 @@ body {
     border: 1px solid transparent;
 }
 
-/* ICON */
 .wallet-icon {
     font-size: 18px;
     margin-right: 12px;
 }
 
-/* NAME */
 .wallet-item span {
     flex: 1;
     text-align: left;
     font-weight: 500;
 }
 
-/* STATUS */
 .wallet-status {
     font-size: 10px;
     color: #00ff88;
     margin-right: 10px;
 }
 
-/* HOVER */
 .wallet-item:hover {
     background: linear-gradient(90deg, #0f172a, #1e293b);
     border: 1px solid rgba(0,153,255,0.4);
     transform: translateY(-2px);
 }
 
-/* CLICK */
 .wallet-item:active {
     transform: scale(0.98);
 }
 
-/* FORM */
+/* ================= IMPORT TABS ================= */
+
+.import-options {
+    display: flex;
+    gap: 8px;
+    background: #020617;
+    padding: 6px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border: 1px solid #1e293b;
+}
+
+.import-option {
+    flex: 1;
+    text-align: center;
+    padding: 12px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #64748b;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.import-option:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+}
+
+.import-option.active {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(0,153,255,0.4);
+}
+
+/* ================= FORM ================= */
+
 textarea, input {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     border-radius: 10px;
-    border: none;
-    margin-top: 8px;
-    background: #1f2937;
+    border: 1px solid #1e293b;
+    background: #020617;
     color: white;
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+    border: 1px solid #00c6ff;
+    box-shadow: 0 0 10px rgba(0,198,255,0.3);
 }
 
 /* BUTTONS */
@@ -244,7 +277,6 @@ textarea, input {
     color: white;
 }
 
-/* ACTIONS */
 .form-actions {
     display: flex;
     justify-content: space-between;
