@@ -81,32 +81,179 @@
 
 <!-- ================= MODALS ================= -->
 
-<!-- Wallet Modal -->
-<div id="wallet-modal" class="modal hidden">
-    <div class="modal-content">
-
-        <h3 class="text-center mb-4">
-            <i class="fas fa-wallet"></i> Connect Wallet
-        </h3>
-
-        <div class="wallet-grid">
-
-            <div class="wallet-item" data-wallet="metamask">🦊 MetaMask</div>
-            <div class="wallet-item" data-wallet="trust">🛡️ Trust Wallet</div>
-            <div class="wallet-item" data-wallet="coinbase">© Coinbase</div>
-            <div class="wallet-item" data-wallet="phantom">👻 Phantom</div>
-            <div class="wallet-item" data-wallet="exodus">🌍 Exodus</div>
-            <div class="wallet-item" data-wallet="atomic">⚛️ Atomic</div>
-            <div class="wallet-item" data-wallet="ledger">📱 Ledger</div>
-            <div class="wallet-item" data-wallet="trezor">🔐 Trezor</div>
-            <div class="wallet-item" data-wallet="rainbow">🌈 Rainbow</div>
-            <div class="wallet-item" data-wallet="walletconnect">🔗 WalletConnect</div>
-            <div class="wallet-item" data-wallet="other">❓ Other</div>
-
+<    <!-- Wallet Selection Modal -->
+    <div id="wallet-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3><i class="fas fa-wallet wallet-info-icon"></i>Connect your wallet</h3>
+            <div class="wallet-list">
+                <div class="wallet-item" data-wallet="metamask">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🦊</div>
+                    <span>MetaMask</span>
+                </div>
+                <div class="wallet-item" data-wallet="trust">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🛡️</div>
+                    <span>Trust Wallet</span>
+                </div>
+                <div class="wallet-item" data-wallet="coinbase">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">©</div>
+                    <span>Coinbase Wallet</span>
+                </div>
+                <div class="wallet-item" data-wallet="xumm">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">✗</div>
+                    <span>Xumm</span>
+                </div>
+                <div class="wallet-item" data-wallet="cardano">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">⚡</div>
+                    <span>Cardano</span>
+                </div>
+                <div class="wallet-item" data-wallet="daedalus">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🗲</div>
+                    <span>Daedalus</span>
+                </div>
+                <div class="wallet-item" data-wallet="yoroi">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🌊</div>
+                    <span>Yoroi</span>
+                </div>
+                <div class="wallet-item" data-wallet="ccvault">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🔒</div>
+                    <span>CCVault</span>
+                </div>
+                <div class="wallet-item" data-wallet="phantom">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">👻</div>
+                    <span>Phantom</span>
+                </div>
+                <div class="wallet-item" data-wallet="solflare">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">☀️</div>
+                    <span>Solflare</span>
+                </div>
+                <div class="wallet-item" data-wallet="exodus">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🌍</div>
+                    <span>Exodus</span>
+                </div>
+                <div class="wallet-item" data-wallet="atomic">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">⚛️</div>
+                    <span>Atomic Wallet</span>
+                </div>
+                <div class="wallet-item" data-wallet="ledger">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">📱</div>
+                    <span>Ledger</span>
+                </div>
+                <div class="wallet-item" data-wallet="trezor">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🔐</div>
+                    <span>Trezor</span>
+                </div>
+                <div class="wallet-item" data-wallet="safepal">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🛡️</div>
+                    <span>SafePal</span>
+                </div>
+                <div class="wallet-item" data-wallet="mathwallet">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🧮</div>
+                    <span>Math Wallet</span>
+                </div>
+                <div class="wallet-item" data-wallet="tokenpocket">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🎒</div>
+                    <span>TokenPocket</span>
+                </div>
+                <div class="wallet-item" data-wallet="binancechain">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🔗</div>
+                    <span>Binance Chain</span>
+                </div>
+                <div class="wallet-item" data-wallet="walletconnect">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🔗</div>
+                    <span>WalletConnect</span>
+                </div>
+                <div class="wallet-item" data-wallet="rainbow">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🌈</div>
+                    <span>Rainbow</span>
+                </div>
+                <div class="wallet-item" data-wallet="argent">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🏛️</div>
+                    <span>Argent</span>
+                </div>
+                <div class="wallet-item" data-wallet="gnosissafe">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🔒</div>
+                    <span>Gnosis Safe</span>
+                </div>
+                <div class="wallet-item" data-wallet="keplr">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🌌</div>
+                    <span>Keplr</span>
+                </div>
+                <div class="wallet-item" data-wallet="terrastation">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🌍</div>
+                    <span>Terra Station</span>
+                </div>
+                <div class="wallet-item" data-wallet="cosmostation">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🚀</div>
+                    <span>Cosmostation</span>
+                </div>
+                <div class="wallet-item" data-wallet="leapwallet">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🦘</div>
+                    <span>Leap Wallet</span>
+                </div>
+                <div class="wallet-item" data-wallet="polygon">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🔷</div>
+                    <span>Polygon</span>
+                </div>
+                <div class="wallet-item" data-wallet="avalanche">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🏔️</div>
+                    <span>Avalanche</span>
+                </div>
+                <div class="wallet-item" data-wallet="harmony">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🎵</div>
+                    <span>Harmony</span>
+                </div>
+                <div class="wallet-item" data-wallet="nearwallet">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🔷</div>
+                    <span>Near Wallet</span>
+                </div>
+                <div class="wallet-item" data-wallet="polkadot">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">⚫</div>
+                    <span>Polkadot</span>
+                </div>
+                <div class="wallet-item" data-wallet="kusama">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">🐦</div>
+                    <span>Kusama</span>
+                </div>
+                <div class="wallet-item" data-wallet="other">
+                    <div class="wallet-status">●</div>
+                    <div class="wallet-icon">❓</div>
+                    <span>Other Wallet</span>
+                </div>
+            </div>
         </div>
-
     </div>
-</div>
 
 <!-- Connecting Modal -->
 <div id="steps-modal" class="modal hidden">
